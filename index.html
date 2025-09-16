@@ -1,1 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Imagens com Filtros</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        .filter-button {Galeria de Imagens com Filtros:
+
+    HTML: Várias imagens (<img>) e botões ou links para os diferentes filtros.
+
+    CSS: Estilização das imagens e dos botões.
+
+    JS: Lógica para filtrar as imagens com base no tipo de filtro selecionado.
+            transition: all 0.3s ease;
+        }
+        .filter-button:hover {
+            transform: scale(1.05);
+        }GalerGaleria de Imagens com Filtros:
+
+    HTML: Várias imagens (<img>) e botões ou links para os diferentes filtros.
+
+    CSS: Estilização das imagens e dos botões.
+
+    JS: Lógica para filtrar as imagens com base no tipo de filtro selecionado.ia de Imagens com Filtros:
+
+    HTML: Várias imagens (<img>) e botões ou links para os diferentes filtros.
+
+    CSS: Estilização das imagens e dos botões.
+
+    JS: Lógica para filtrar as imagens com base no tipo de filtro selecionado.
+        .image-card {
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .hidden-image {Galeria de Imagens com Filtros:
+
+    HTML: Várias imagens (<imGaleria de Imagens com Filtros:
+
+    HTML: Várias imagens (<img>) e botões ou links para os diferentes filtros.
+
+    CSS: Estilização das imagens e dos botões.
+
+    JS: Lógica para filtrar as imagens com base no tipo de filtro selecionado.g>) e botões ou links para os diferentes filtros.
+
+    CSS: Estilização das imagens e dos botões.
+
+    JS: Lógica para filtrar as imagens com base no tipo de filtro selecionado.
+            transform: scale(0);
+            opacity: 0;
+            height: 0;
+            width: 0;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-center mb-4 text-white">Galeria de Fotos</h1>
+        <p class="text-center text-lg md:text-xl text-gray-400 mb-8">
+            Clique nos botões para filtrar as imagens por categoria.
+        </p>Galeria de Imagens com Filtros:
+
+    HTML: Várias imagens (<img>) e botões ou links para os diferentes filtros.
+
+    CSS: Estilização das imagens e dos botões.
+
+    JS: Lógica para filtrar as imagens com base no tipo de filtro selecionado.
+        
+        <!-- Botões de Filtro -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="filter-button bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full shadow-lg" data-filter="all">Todas</button>
+            <button class="filter-button bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full shadow-lg" data-filter="natureza">Natureza</button>
+            <button class="filter-button bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded-full shadow-lg" data-filter="cidades">Cidades</button>
+            <button class="filter-button bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-full shadow-lg" data-filter="animais">Animais</button>
+        </div>
+
+        <!-- Galeria de Imagens -->
+        <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- As imagens serão exibidas aqui -->
+        </div>
+    </div>
+
+    <script>
+        // Array de objetos com os dados das imagens
+        const images = [
+            { src: "https://placehold.co/600x400/87CEEB/ffffff?text=Céu", category: "natureza", alt: "Céu azul com nuvens" },
+            { src: "https://placehold.co/600x400/A0522D/ffffff?text=Montanhas", category: "natureza", alt: "Montanhas cobertas de floresta" },
+            { src: "https://placeholdGaleria de Imagens com Filtros:
+
+    HTML: Várias imagens (<img>) e botões ou links para os diferentes filtros.
+
+    CSS: Estilização das imagens e dos botões.
+
+    JS: Lógica para filtrar as imagens com base no tipo de filtro selecionado..co/600x400/2F4F4F/ffffff?text=Floresta", category: "natureza", alt: "Floresta densa e escura" },
+            { src: "https://placehold.co/600x400/D2B48C/ffffff?text=Deserto", category: "natureza", alt: "Deserto árido com cactos" },
+            { src: "https://placehold.co/600x400/B0C4DE/ffffff?text=Praia", category: "natureza", alt: "Praia tropical com palmeiras" },
+            { src: "https://placehold.co/600x400/000000/ffffff?text=Arr.+Céu", category: "cidades", alt: "Arranha-céus de uma cidade grande" },
+            { src: "https://placehold.co/600x400/A9A9A9/ffffff?text=Rua", category: "cidades", alt: "Rua movimentada de uma cidade" },
+            { src: "https://placehold.co/600x400/696969/ffffff?text=Ponte", category: "cidades", alt: "Ponte iluminada à noite" },
+            { src: "https://placehold.co/600x400/C0C0C0/ffffff?text=Metrô", category: "cidades", alt: "Estação de metrô moderna" },
+            { src: "https://placehold.co/600x400/4682B4/ffffff?text=Rio", category: "cidades", alt: "Rio em uma cidade grande" },
+            { src: "https://placehold.co/600x400/8B0000/ffffff?text=Leão", category: "animais", alt: "Leão majestoso" },
+            { src: "https://placehold.co/600x400/FFD700/ffffff?text=Tigre", category: "animais", alt: "Tigre selvagem" },
+            { src: "https://placehold.co/600x400/4B0082/ffffff?text=Coruja", category: "animais", alt: "Coruja em uma árvore" },
+            { src: "https://placehold.co/600x400/BDB76B/ffffff?text=Zebra", category: "animais", alt: "Zebra com suas listras" },
+            { src: "https://placehold.co/600x400/6B8E23/ffffff?text=Elefante", category: "animais", alt: "Elefante africano" }
+        ];
+
+        const gallery = document.getElementById('gallery');
+        const filterButtons = document.querySelectorAll('.filter-button');
+
+        // Função para renderizar as imagens na galeria
+        const renderImages = () => {
+            gallery.innerHTML = ''; // Limpa a galeria antes de adicionar as imagens
+            images.forEach(image => {
+                const imgElement = document.createElement('img');
+                imgElement.src = image.src;
+                imgElement.alt = image.alt;
+                imgElement.classList.add('w-full', 'rounded-lg', 'shadow-md', 'object-cover', 'image-card');
+                imgElement.setAttribute('data-category', image.category);
+                
+                gallery.appendChild(imgElement);
+            });
+        };
+
+        // Função para filtrar as imagens
+        const filterImages = (category) => {
+            const allImages = document.querySelectorAll('.image-card');
+            allImages.forEach(img => {
+                if (category === 'all' || img.getAttribute('data-category') === category) {
+                    img.style.display = 'block'; // Mostra a imagem
+                } else {
+                    img.style.display = 'none'; // Esconde a imagem
+                }
+            });
+        };
+
+        // Adiciona event listeners aos botões de filtro
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-filter');
+                filterImages(category);
+            });
+        });
+
+        // Renderiza todas as imagens inicialmente
+        renderImages();
+    </script>
+</body>
+</html>
 
